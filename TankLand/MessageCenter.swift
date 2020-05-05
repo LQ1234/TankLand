@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  MessageCenter.swift
 //  TankLand
 //
 //  Created by larry qiu on 5/5/20.
@@ -8,4 +8,4 @@
 
 import Foundation
 
-print("Hello, World!")
+struct MessageCenter {}

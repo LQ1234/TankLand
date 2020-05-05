@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  TankWorldSupport.swift
 //  TankLand
 //
 //  Created by larry qiu on 5/5/20.
@@ -8,4 +8,6 @@
 
 import Foundation
 
-print("Hello, World!")
+extension TankWorld {
+    // put the support code methods in this file
+}

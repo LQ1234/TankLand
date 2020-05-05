@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		C4826C8224621D8E0034F48C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826C8124621D8E0034F48C /* main.swift */; };
+		C4826C8924621EC30034F48C /* TankWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826C8824621EC20034F48C /* TankWorld.swift */; };
+		C4826C8B2462207D0034F48C /* TankWorldSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826C8A2462207D0034F48C /* TankWorldSupport.swift */; };
+		C4826C8D246220970034F48C /* TankWorldDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826C8C246220970034F48C /* TankWorldDisplay.swift */; };
+		C4826C91246221040034F48C /* TankWorldActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826C90246221040034F48C /* TankWorldActions.swift */; };
+		C4826C93246221440034F48C /* GameObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826C92246221440034F48C /* GameObjectType.swift */; };
+		C4826C95246221640034F48C /* Tank.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826C94246221640034F48C /* Tank.swift */; };
+		C4826C97246221B90034F48C /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826C96246221B90034F48C /* Action.swift */; };
+		C4826C99246221D20034F48C /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826C98246221D20034F48C /* Position.swift */; };
+		C4826C9B246221F30034F48C /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826C9A246221F30034F48C /* Direction.swift */; };
+		C4826C9D2462220C0034F48C /* RadarResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826C9C2462220C0034F48C /* RadarResult.swift */; };
+		C4826C9F2462222A0034F48C /* MessageCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826C9E2462222A0034F48C /* MessageCenter.swift */; };
+		C4826CA1246222470034F48C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826CA0246222470034F48C /* Constants.swift */; };
+		C4826CA3246222670034F48C /* TankWorldPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826CA2246222670034F48C /* TankWorldPrint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +38,19 @@
 /* Begin PBXFileReference section */
 		C4826C7E24621D8E0034F48C /* TankLand */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TankLand; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4826C8124621D8E0034F48C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		C4826C8824621EC20034F48C /* TankWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TankWorld.swift; sourceTree = "<group>"; };
+		C4826C8A2462207D0034F48C /* TankWorldSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TankWorldSupport.swift; sourceTree = "<group>"; };
+		C4826C8C246220970034F48C /* TankWorldDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TankWorldDisplay.swift; sourceTree = "<group>"; };
+		C4826C90246221040034F48C /* TankWorldActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TankWorldActions.swift; sourceTree = "<group>"; };
+		C4826C92246221440034F48C /* GameObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObjectType.swift; sourceTree = "<group>"; };
+		C4826C94246221640034F48C /* Tank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tank.swift; sourceTree = "<group>"; };
+		C4826C96246221B90034F48C /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		C4826C98246221D20034F48C /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		C4826C9A246221F30034F48C /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		C4826C9C2462220C0034F48C /* RadarResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarResult.swift; sourceTree = "<group>"; };
+		C4826C9E2462222A0034F48C /* MessageCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCenter.swift; sourceTree = "<group>"; };
+		C4826CA0246222470034F48C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C4826CA2246222670034F48C /* TankWorldPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TankWorldPrint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +84,19 @@
 			isa = PBXGroup;
 			children = (
 				C4826C8124621D8E0034F48C /* main.swift */,
+				C4826C8824621EC20034F48C /* TankWorld.swift */,
+				C4826C92246221440034F48C /* GameObjectType.swift */,
+				C4826C8A2462207D0034F48C /* TankWorldSupport.swift */,
+				C4826C94246221640034F48C /* Tank.swift */,
+				C4826C96246221B90034F48C /* Action.swift */,
+				C4826C9A246221F30034F48C /* Direction.swift */,
+				C4826C9E2462222A0034F48C /* MessageCenter.swift */,
+				C4826CA0246222470034F48C /* Constants.swift */,
+				C4826C9C2462220C0034F48C /* RadarResult.swift */,
+				C4826CA2246222670034F48C /* TankWorldPrint.swift */,
+				C4826C98246221D20034F48C /* Position.swift */,
+				C4826C8C246220970034F48C /* TankWorldDisplay.swift */,
+				C4826C90246221040034F48C /* TankWorldActions.swift */,
 			);
 			path = TankLand;
 			sourceTree = "<group>";
@@ -120,7 +159,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4826C8924621EC30034F48C /* TankWorld.swift in Sources */,
+				C4826C9D2462220C0034F48C /* RadarResult.swift in Sources */,
+				C4826C8D246220970034F48C /* TankWorldDisplay.swift in Sources */,
+				C4826C8B2462207D0034F48C /* TankWorldSupport.swift in Sources */,
+				C4826C9B246221F30034F48C /* Direction.swift in Sources */,
+				C4826C91246221040034F48C /* TankWorldActions.swift in Sources */,
+				C4826C93246221440034F48C /* GameObjectType.swift in Sources */,
+				C4826CA1246222470034F48C /* Constants.swift in Sources */,
+				C4826C97246221B90034F48C /* Action.swift in Sources */,
+				C4826C9F2462222A0034F48C /* MessageCenter.swift in Sources */,
+				C4826C95246221640034F48C /* Tank.swift in Sources */,
 				C4826C8224621D8E0034F48C /* main.swift in Sources */,
+				C4826CA3246222670034F48C /* TankWorldPrint.swift in Sources */,
+				C4826C99246221D20034F48C /* Position.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
