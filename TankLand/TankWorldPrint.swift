@@ -35,35 +35,22 @@ extension TankWorld {
 
     func gridReport() -> String {
         var report1 = ""
-
         var report2 = ""
-
         var report3 = ""
-
         let gridLine = "|_______|________|________|________|________|________|________|________|________|________|________|________|________|________|________|\n"
-
         let topGridLine = "_______________________________________________________________________________________________________________________________________\n"
-
         var report = topGridLine
-
         for row in 0 ..< numberRows {
             report1 = "|"
-
             report2 = "|"
-
             report3 = "|"
-
             for col in 0 ..< numberCols {
                 report1 += energyOrBlanks(gameObject: grid[row][col]) + "| "
-
                 report2 += idOrBlanks(gameObject: grid[row][col]) + "| "
-
                 report3 += positionOrBlanks(row: row, col: col, gameObject: grid[row][col]) + "| "
             }
-
             report += report1 + "\n" + report2 + "\n" + report3 + "\n" + gridLine
         }
-
         return report
     }
 }

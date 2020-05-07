@@ -8,4 +8,11 @@
 
 import Foundation
 
-struct Position {}
+struct Position {
+    var row:Int
+    var col:Int
+    init(row: Int, col: Int){
+        self.row=row
+        self.col=col
+    }
+}

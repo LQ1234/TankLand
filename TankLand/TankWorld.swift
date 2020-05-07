@@ -11,10 +11,12 @@ import Foundation
 class TankWorld {
     var grid: [[GameObject?]]
     var turn: Int
-
+    var gameOver = false
+    var lastLivingTank:Tank?=nil
+    var numberLivingTanks=0
     // Other useful properties go here
 
-    init() {
+    init(numberCols:Int,numberRows:Int) {
         grid = Array(repeating: Array(repeating: nil, count: numberCols), count: numberRows)
         // other init stuff
     }
@@ -26,11 +28,11 @@ class TankWorld {
 
     func populateTankWorld() {
         // Sample
-        addGameObject(gameObject: JTank5(row: 2, col: 2, name: "T1", energy: 20000, id: "J1", instructions: ""))
+        addGameObject(gameObject: Tank(row: 2, col: 2, name: "T1", energy: 20000, id: "J1", instructions: ""))
 
-        addGameObject(gameObject: JTank4(row: 7, col: 2, name: "T2", energy: 20000, id: "J2", instructions: ""))
+        addGameObject(gameObject: Tank(row: 7, col: 2, name: "T2", energy: 20000, id: "J2", instructions: ""))
 
-        addGameObject(gameObject: JTank4(row: 7, col: 3, name: "T2", energy: 10000, id: "J3", instructions: ""))
+        addGameObject(gameObject: Tank(row: 7, col: 3, name: "T2", energy: 10000, id: "J3", instructions: ""))
 
         // addGameObject( gameObject: JTank(row: 7, col: 5,  name: "T5", energy: 8000, id: "J3", instructions: ""))
 

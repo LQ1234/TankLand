@@ -8,4 +8,8 @@
 
 import Foundation
 
-enum GameObjectType {}
+enum GameObjectType {
+    case Mine
+    case Tank
+    case Rover
+}
