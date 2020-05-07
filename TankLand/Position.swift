@@ -8,11 +8,15 @@
 
 import Foundation
 
-struct Position {
+struct Position:Hashable {
     var row:Int
     var col:Int
     init(row: Int, col: Int){
         self.row=row
         self.col=col
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(row)
+        hasher.combine(col)
     }
 }

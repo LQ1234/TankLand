@@ -42,5 +42,5 @@ struct MoveAction: PostAction {
 import Foundation
 
 enum Actions {
-    ………
+    case Move
 }

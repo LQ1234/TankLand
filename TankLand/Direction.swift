@@ -8,4 +8,9 @@
 
 import Foundation
 
-struct Direction {}
+struct Direction {
+    var angle:Double
+    Direction(a){
+        angle=a
+    }
+}

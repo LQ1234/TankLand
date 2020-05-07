@@ -14,9 +14,13 @@ class TankWorld {
     var gameOver = false
     var lastLivingTank:Tank?=nil
     var numberLivingTanks=0
+    let numberCols,numberRows
+    
     // Other useful properties go here
 
     init(numberCols:Int,numberRows:Int) {
+        self.numberCols=numberCols
+        self.numberRows=numberRows
         grid = Array(repeating: Array(repeating: nil, count: numberCols), count: numberRows)
         // other init stuff
     }
