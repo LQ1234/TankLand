@@ -10,7 +10,8 @@ import Foundation
 
 extension Position {
     init (position: Position, direction: Direction, magnitude: Int){
-        self.init(row:position.row+Int(sin(direction.angle)*Double(magnitude)),col:col+Int(cos(direction.angle)*Double(magnitude)))
+        let asvec=direction.asVec()
+        self.init(row:position.row+asvec.row*magnitude,col:col+asvec.col*magnitude)
     }
     static func distancesq(_ p1: Position, _ p2: Position)->Int{
         return((p1.row-p2.row)*(p1.row-p2.row)+(p1.col-p2.col)*(p1.col-p2.col))
@@ -42,8 +43,8 @@ extension TankWorld{
     func findAllTanks()->[Tank] {
         return(findAllGameObjects().filter{$0.objectType == .Tank}.map{$0 as! Tank})
     }
-    func findAllRovers()->[Rover]{
-        return(findAllGameObjects().filter{$0.objectType == .Rover}.map{$0 as! Rover})
+    func findAllRovers()->[Mine]{
+        return(findAllGameObjects().filter{$0.objectType == .Rover}.map{$0 as! Mine})
         
     }
     func findAllMines()->[Mine]{
@@ -103,8 +104,11 @@ func randomizeGameObjects<T: GameObject>(gameObjects: [T])->[T]{
     return(gameObjects.shuffled())
 }
 func getRandomDirection()->Direction {
-    return(Direction(angle:Double.random.in(0..<2*Double.pi)))
+    return(Direction.random())
 }
 func isEnergyAvailable(_ gameObject: GameObject, amount: Int)->Bool {
     return(gameObject.energy>=amount)
+}
+func applyCost(_ gameObject: GameObject, amount: Int){
+    gameObject.addEnergy(amount: -amount)
 }

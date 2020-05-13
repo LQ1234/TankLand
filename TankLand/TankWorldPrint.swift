@@ -33,6 +33,13 @@ extension TankWorld {
         return fit("(\(row),\(col))", 7)
     }
 
+    func fitI(_ text:String,_ len:Int)->String{
+        return(text.padding(toLength: len,withPad: " ",startingAt: 0))
+    }
+    func fit(_ text:String,_ len:Int)->String{
+        let first=text.count/2
+        return(text.padding(toLength: first,withPad: " ",startingAt: text.count).padding(toLength: text.count-first,withPad: " ",startingAt: 0))
+    }
     func gridReport() -> String {
         var report1 = ""
         var report2 = ""

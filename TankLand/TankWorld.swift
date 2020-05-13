@@ -14,7 +14,7 @@ class TankWorld {
     var gameOver = false
     var lastLivingTank:Tank?=nil
     var numberLivingTanks=0
-    let numberCols,numberRows
+    let numberCols,numberRows:Int
     
     // Other useful properties go here
 
@@ -77,7 +77,7 @@ class TankWorld {
         populateTankWorld()
         print(gridReport())
         while !gameOver {
-            // This while loop is the driver for TankLand
+            runOneTurn()
         }
         print("****Winner is...\(lastLivingTank!)")
     }

@@ -33,7 +33,7 @@ extension TankWorld {
         logger.addLog(tank, "Receiving Message \(receiveMessageAction)")
 
         if !isEnergyAvailable(tank, amount: Constants.costOfReceivingMessage) {
-            logger.addLog(tank, "Insufficient energy to send message")
+            logger.addLog(tank, "Insufficient energy to recieve message")
 
             return
         }

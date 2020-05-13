@@ -17,22 +17,51 @@ protocol PreAction: Action {}
 
 protocol PostAction: Action {}
 
+struct SendMessageAction:PreAction {
+    let action: Actions = .SendMessage
+    let id:String
+    let message:String
+    var description: String {
+        return "\(action) \(id) \(message)"
+    }
+    init (id:String,message:String){
+        self.id=id
+        self.message=message
+    }
+    
+}
+struct ReceiveMessageAction:PreAction {
+    let action: Actions = .ReceiveMessage
+    let id:String
+    var description: String {
+        return "\(action) \(id)"
+    }
+    init (id:String,text:String){
+        self.id=id
+    }
+}
+struct SetShieldsAction:PreAction{
+    let action: Actions = .SetShields
+    let shieldPower:Int
+    var description: String {
+        return "\(action) \(shieldPower)"
+    }
+    init (shieldPower:Int){
+        self.shieldPower=shieldPower
+    }
+}
+struct 
 struct MoveAction: PostAction {
-    let action: Actions
-
+    let action: Actions = .Move
     let distance: Int
-
     let direction: Direction
-
     var description: String {
         return "\(action) \(distance) \(direction)"
     }
 
     init(distance: Int, direction: Direction) {
-        action = .Move
-
         self.distance = distance
-
+        
         self.direction = direction
     }
 }
@@ -42,5 +71,12 @@ struct MoveAction: PostAction {
 import Foundation
 
 enum Actions {
+    case SendMessage
+    case ReceiveMessage
+    case SetShields
+    case RunRadar
+    case DropMine
+    case DropRover
+    case FireMissile
     case Move
 }
