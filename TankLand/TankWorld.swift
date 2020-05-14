@@ -22,6 +22,7 @@ class TankWorld {
         self.numberCols=numberCols
         self.numberRows=numberRows
         grid = Array(repeating: Array(repeating: nil, count: numberCols), count: numberRows)
+        turn=1
         // other init stuff
     }
 
@@ -38,9 +39,9 @@ class TankWorld {
 
         addGameObject(gameObject: Tank(row: 7, col: 3, name: "T2", energy: 10000, id: "J3", instructions: ""))
 
-        // addGameObject( gameObject: JTank(row: 7, col: 5,  name: "T5", energy: 8000, id: "J3", instructions: ""))
+        addGameObject(gameObject: Tank(row: 7, col: 5,  name: "T5", energy: 8000, id: "J3", instructions: ""))
 
-        // addGameObject( gameObject: JTank(row: 12, col: 3,  name: "T6", energy: 7000, id: "J4", instructions: ""))
+        addGameObject(gameObject: Tank(row: 12, col: 3,  name: "T6", energy: 7000, id: "J4", instructions: ""))
     }
 
     func addGameObject(gameObject: GameObject) {
@@ -52,11 +53,11 @@ class TankWorld {
     }
 
     // One handle helper method for each action. Example:
-
+    /*
     func handleRadar(tank: Tank) {
-        guard let radarAction = tank.preActions[.Radar] else { return }
-        actionRunRadar(tank: tank, radarAction: radarAction as! RadarAction)
-    }
+        guard let radarAction = tank.preActions[.RunRadar] else { return }
+        actionRunRadar(tank: tank, radarAction: radarAction as! RunRadarAction)
+    }*/
 
     func doTurn() {
         var allObjects = findAllGameObjects()

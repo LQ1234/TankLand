@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C43B8BFC246D928300BD1D40 /* Mine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B8BFB246D928300BD1D40 /* Mine.swift */; };
 		C4826C8224621D8E0034F48C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826C8124621D8E0034F48C /* main.swift */; };
 		C4826C8924621EC30034F48C /* TankWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826C8824621EC20034F48C /* TankWorld.swift */; };
 		C4826C8B2462207D0034F48C /* TankWorldSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826C8A2462207D0034F48C /* TankWorldSupport.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C43B8BFB246D928300BD1D40 /* Mine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mine.swift; sourceTree = "<group>"; };
 		C4826C7E24621D8E0034F48C /* TankLand */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TankLand; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4826C8124621D8E0034F48C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C4826C8824621EC20034F48C /* TankWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TankWorld.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				C4F7C6A92463785E00EC40F1 /* Logger.swift */,
 				C4826C92246221440034F48C /* GameObjectType.swift */,
 				C4826C94246221640034F48C /* Tank.swift */,
+				C43B8BFB246D928300BD1D40 /* Mine.swift */,
 				C4826C9A246221F30034F48C /* Direction.swift */,
 				C4826C9E2462222A0034F48C /* MessageCenter.swift */,
 				C4F7C6A72463775900EC40F1 /* GameObject.swift */,
@@ -180,6 +183,7 @@
 				C4826C8224621D8E0034F48C /* main.swift in Sources */,
 				C4F7C6AC2464B07C00EC40F1 /* HelperKit.swift in Sources */,
 				C4826C99246221D20034F48C /* Position.swift in Sources */,
+				C43B8BFC246D928300BD1D40 /* Mine.swift in Sources */,
 				C4F7C6A82463775900EC40F1 /* GameObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

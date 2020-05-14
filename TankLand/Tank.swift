@@ -19,7 +19,7 @@ class Tank: GameObject {
     init(row: Int, col: Int, name: String, energy: Int, id: String, instructions: String) {
         initialInstructions = instructions
 
-        super.init(row: row, col: col, objectType: .Tank, name: name, energy: energy, id: id)
+        super.init(row: row, col: col, objectType: .Tank, energy: energy, id: name)
     }
 
     final func clearActions() {

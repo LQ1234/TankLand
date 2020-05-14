@@ -9,3 +9,6 @@
 import Foundation
 
 print("Hello, World!")
+let k=TankWorld(numberCols: 15, numberRows: 15);
+k.populateTankWorld()
+k.runOneTurn()

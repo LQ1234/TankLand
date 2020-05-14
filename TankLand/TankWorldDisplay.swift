@@ -29,8 +29,9 @@ extension TankWorld {
         return(text.padding(toLength: len,withPad: " ",startingAt: 0))
     }
     func fit(_ text:String,_ len:Int)->String{
-        let first=text.count/2
-        return(text.padding(toLength: first,withPad: " ",startingAt: text.count).padding(toLength: text.count-first,withPad: " ",startingAt: 0))
+        let fill=len-text.count
+        let first=fill/2
+        return(String(repeating: " ", count: first)+text+String(repeating: " ", count: fill-first))
     }
     func gridReport() -> String {
         var report1 = ""

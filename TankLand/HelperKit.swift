@@ -11,7 +11,7 @@ import Foundation
 extension Position {
     init (position: Position, direction: Direction, magnitude: Int){
         let asvec=direction.asVec()
-        self.init(row:position.row+asvec.row*magnitude,col:col+asvec.col*magnitude)
+        self.init(row:position.row+asvec.row*magnitude,col:position.col+asvec.col*magnitude)
     }
     static func distancesq(_ p1: Position, _ p2: Position)->Int{
         return((p1.row-p2.row)*(p1.row-p2.row)+(p1.col-p2.col)*(p1.col-p2.col))

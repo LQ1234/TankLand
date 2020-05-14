@@ -50,7 +50,6 @@ struct SetShieldsAction:PreAction{
         self.shieldPower=shieldPower
     }
 }
-struct 
 struct MoveAction: PostAction {
     let action: Actions = .Move
     let distance: Int
