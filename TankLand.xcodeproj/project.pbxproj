@@ -91,12 +91,12 @@
 			children = (
 				C4826C8124621D8E0034F48C /* main.swift */,
 				C4F7C6A92463785E00EC40F1 /* Logger.swift */,
+				C4F7C6A72463775900EC40F1 /* GameObject.swift */,
 				C4826C92246221440034F48C /* GameObjectType.swift */,
 				C4826C94246221640034F48C /* Tank.swift */,
 				C43B8BFB246D928300BD1D40 /* Mine.swift */,
 				C4826C9A246221F30034F48C /* Direction.swift */,
 				C4826C9E2462222A0034F48C /* MessageCenter.swift */,
-				C4F7C6A72463775900EC40F1 /* GameObject.swift */,
 				C4826C9C2462220C0034F48C /* RadarResult.swift */,
 				C4826CA0246222470034F48C /* Constants.swift */,
 				C4826C98246221D20034F48C /* Position.swift */,

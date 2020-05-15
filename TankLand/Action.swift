@@ -28,6 +28,9 @@ struct SendMessageAction:PreAction {
         self.id=id
         self.message=message
     }
+    var energyCostIfSucceeds:Int{
+        return(Constants.costOfSendingMessage)
+    }
     
 }
 struct ReceiveMessageAction:PreAction {
@@ -39,16 +42,69 @@ struct ReceiveMessageAction:PreAction {
     init (id:String,text:String){
         self.id=id
     }
+    var energyCostIfSucceeds:Int{
+        return(Constants.costOfReceivingMessage)
+    }
 }
 struct SetShieldsAction:PreAction{
     let action: Actions = .SetShields
-    let shieldPower:Int
+    let energyGiven:Int
     var description: String {
-        return "\(action) \(shieldPower)"
+        return "\(action) \(energyGiven)"
     }
-    init (shieldPower:Int){
-        self.shieldPower=shieldPower
+    init (energyGiven:Int){
+        self.energyGiven=energyGiven
     }
+    var energyCostIfSucceeds:Int{
+        return(energyGiven)
+    }
+}
+
+struct DropMineAction:PostAction{
+    let action: Actions = .DropMine
+    let energyGiven:Int
+    let dropDirection:Direction
+    var description: String {
+        return "\(action) \(energyGiven) \(dropDirection)"
+    }
+    init (energyGiven:Int,dropDirection:Direction){
+        self.energyGiven=energyGiven
+        self.dropDirection=dropDirection
+    }
+    var energyCostIfSucceeds:Int{
+        return(Constants.costOfReleasingMine+self.energyGiven)
+    }
+}
+
+struct DropRoverAction:PostAction{
+    let action: Actions = .DropRover
+    let energyGiven:Int
+    let dropDirection:Direction
+    let directionGiven:Direction?
+    var description: String {
+        return "\(action) \(energyGiven) \(dropDirection) \(directionGiven)"
+    }
+    init (energyGiven:Int,dropDirection:Direction,directionGiven:Direction?){
+        self.energyGiven=energyGiven
+        self.dropDirection=dropDirection
+        self.directionGiven=directionGiven
+    }
+    var energyCostIfSucceeds:Int{
+        return(Constants.costOfReleasingRover+self.energyGiven)
+    }
+}
+struct FireMissileAction: PostAction{
+    let action: Actions = .FireMissile
+    let energyGiven:Int
+    let destination:Position
+    var description: String {
+        return "\(action) \(energyGiven) \(destination)"
+    }
+    init (energyGiven:Int,destination:Position){
+        self.energyGiven=energyGiven
+        self.destination=destination
+    }
+
 }
 struct MoveAction: PostAction {
     let action: Actions = .Move
@@ -62,6 +118,9 @@ struct MoveAction: PostAction {
         self.distance = distance
         
         self.direction = direction
+    }
+    var energyCostIfSucceeds:Int{
+        return(Constants.costOfMovingTankPerUnitDistance[self.distance-1])
     }
 }
 
