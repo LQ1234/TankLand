@@ -33,15 +33,15 @@ class TankWorld {
 
     func populateTankWorld() {
         // Sample
-        addGameObject(gameObject: Tank(row: 2, col: 2, name: "T1", energy: 20000, id: "J1", instructions: ""))
+        addGameObject(gameObject: LTank(row: 2, col: 2, name: "T1", energy: 2000000, id: "J1", instructions: ""))
 
-        addGameObject(gameObject: Tank(row: 7, col: 2, name: "T2", energy: 20000, id: "J2", instructions: ""))
+        addGameObject(gameObject: LTank(row: 7, col: 2, name: "T2", energy: 2000000, id: "J2", instructions: ""))
 
-        addGameObject(gameObject: Tank(row: 7, col: 3, name: "T2", energy: 10000, id: "J3", instructions: ""))
+        addGameObject(gameObject: LTank(row: 7, col: 3, name: "T3", energy: 2000000, id: "J3", instructions: ""))
 
-        addGameObject(gameObject: Tank(row: 7, col: 5,  name: "T5", energy: 8000, id: "J3", instructions: ""))
+        addGameObject(gameObject: LTank(row: 7, col: 5,  name: "T5", energy: 2000000, id: "J3", instructions: ""))
 
-        addGameObject(gameObject: Tank(row: 12, col: 3,  name: "T6", energy: 7000, id: "J4", instructions: ""))
+        addGameObject(gameObject: LTank(row: 12, col: 3,  name: "T6", energy: 2000000, id: "J4", instructions: ""))
     }
 
     func addGameObject(gameObject: GameObject) {
@@ -53,22 +53,146 @@ class TankWorld {
     }
 
     // One handle helper method for each action. Example:
-    /*
-    func handleRadar(tank: Tank) {
-        guard let radarAction = tank.preActions[.RunRadar] else { return }
-        actionRunRadar(tank: tank, radarAction: radarAction as! RunRadarAction)
-    }*/
-
+    
+    func handleRunRadar(tank: Tank) {
+        guard let runRadarAction = tank.preActions[.RunRadar] else { return }
+        actionRunRadar(tank: tank, runRadarAction: runRadarAction as! RunRadarAction)
+    }
+    func handleSendMessage(tank: Tank) {
+        guard let sendMessageAction = tank.preActions[.SendMessage] else { return }
+        actionSendMessage(tank: tank, sendMessageAction: sendMessageAction as! SendMessageAction)
+    }
+    func handleReceiveMessage(tank: Tank) {
+        guard let receiveMessageAction = tank.preActions[.ReceiveMessage] else { return }
+        actionReceiveMessage(tank: tank, receiveMessageAction: receiveMessageAction as! ReceiveMessageAction)
+    }
+    func handleSetShields(tank: Tank) {
+        guard let setShieldsAction = tank.preActions[.SetShields] else { return }
+        actionSetShields(tank: tank, setShieldsAction: setShieldsAction as! SetShieldsAction)
+    }
+    func handleDropMine(tank: Tank) {
+        guard let dropMineAction = tank.postActions[.DropMineOrRover] as? DropMineAction else { return }
+        
+        actionDropMine(tank: tank, dropMineAction: dropMineAction)
+    }
+    func handleDropRover(tank: Tank) {
+        guard let dropRoverAction = tank.postActions[.DropMineOrRover] as? DropRoverAction else { return }
+        actionDropRover(tank: tank, dropRoverAction: dropRoverAction)
+    }
+    func handleFireMissile(tank: Tank) {
+        guard let fireMissileAction = tank.postActions[.FireMissile] else { return }
+        actionFireMissile(tank: tank, fireMissileAction: fireMissileAction as! FireMissileAction)
+    }
+    func handleMove(tank: Tank) {
+        guard let moveAction = tank.postActions[.Move] else { return }
+        actionMove(tank: tank, moveAction: moveAction as! MoveAction)
+    }
+   
+    func checkWinner() -> Bool{
+        var alive=0;
+        for tank in findAllTanks(){
+            if(isDead(tank)){
+                fatalError("tank is dead but still in grid")
+            }
+            alive+=1;
+        }
+        if(alive==1){
+            gameOver=true;
+            lastLivingTank=findWinner()
+            return(true)
+        }
+        return(false)
+    }
+    
     func doTurn() {
-        var allObjects = findAllGameObjects()
-        allObjects = randomizeGameObjects(gameObjects: allObjects)
+        for go in randomizeGameObjects(gameObjects: findAllGameObjects()){
+            var cost:Int
+            switch(go.objectType){
+            case .Mine:
+                cost=Constants.costLifeSupportMine
+            case .Rover:
+                cost=Constants.costLifeSupportRover
+            case .Tank:
+                cost=Constants.costLifeSupportTank
 
-        // all the code needed to run a single turn goes here
-        // many for loops as discussed in class
+            }
+            applyCost(go,amount: cost)
+            if(isDead(go)){
+                grid[go.position.row][go.position.col]=nil
+                if(checkWinner()){
+                    return;
+                }
+            }
+        }
+  
+        for rover in randomizeGameObjects(gameObjects: findAllRovers()){
+            let destination=Position(position: rover.position, direction: rover.givenDirection ?? getRandomDirection(), magnitude: 1)
+            if(isValidPosition(destination)&&isEnergyAvailable(rover,amount: Constants.costOfMovingRover)){
+                if let go=grid[destination.row][destination.col]{
+                    dealMineDamage(rover, go)
+                    logger.addLog(rover, "Moving rover hit \(go)")
+                    if(isDead(go)){
+                        grid[go.position.row][go.position.col]=nil
+                        logger.addLog(rover, "Moving rover killed \(go)")
 
+                        if(go.objectType == .Tank && checkWinner()){
+                            return;
+                        }
+                    }
+                }else{
+                    applyCost(rover,amount: Constants.costOfMovingRover)
+                    moveObject(rover, destination)
+                    
+                }
+
+
+            }
+        }
+        
+        var tanks=findAllTanks()
+        tanks = randomizeGameObjects(gameObjects: tanks)
+        for tank in tanks{
+            tank.computePreActions()
+        }
+        for tank in tanks {
+            handleRunRadar(tank: tank)
+        }
+        MessageCenter.clear()
+        for tank in tanks {
+            handleSendMessage(tank: tank)
+        }
+        for tank in tanks {
+            handleReceiveMessage(tank: tank)
+        }
+        for tank in tanks {
+            handleSetShields(tank: tank)
+        }
+        tanks = randomizeGameObjects(gameObjects: tanks)
+        for tank in tanks{
+            tank.computePostActions()
+        }
+        for tank in tanks {
+            handleDropMine(tank: tank)
+            if(checkWinner()){
+                return;
+            }
+            handleDropRover(tank: tank)
+            if(checkWinner()){
+                return;
+            }
+            handleFireMissile(tank: tank)
+            if(checkWinner()){
+                return;
+            }
+            handleMove(tank: tank)
+            if(checkWinner()){
+                return;
+            }
+        }
+ 
         turn += 1
     }
-
+    
     func runOneTurn() {
         doTurn()
         print(gridReport())

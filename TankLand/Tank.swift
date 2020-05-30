@@ -10,7 +10,7 @@ import Foundation
 
 class Tank: GameObject {
     private(set) var shields: Int = 0
-    private var radarResults: [RadarResult]?
+    private(set) var radarResults: [RadarResult]?
     private var receivedMessage: String?
     private(set) var preActions = [Actions: PreAction]()
     private(set) var postActions = [Actions: PostAction]()

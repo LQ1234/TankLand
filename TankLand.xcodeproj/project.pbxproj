@@ -23,7 +23,6 @@
 		C4826CA1246222470034F48C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4826CA0246222470034F48C /* Constants.swift */; };
 		C4F7C6A82463775900EC40F1 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7C6A72463775900EC40F1 /* GameObject.swift */; };
 		C4F7C6AA2463785E00EC40F1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7C6A92463785E00EC40F1 /* Logger.swift */; };
-		C4F7C6AC2464B07C00EC40F1 /* HelperKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7C6AB2464B07C00EC40F1 /* HelperKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,7 +55,6 @@
 		C4826CA0246222470034F48C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C4F7C6A72463775900EC40F1 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 		C4F7C6A92463785E00EC40F1 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		C4F7C6AB2464B07C00EC40F1 /* HelperKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +103,6 @@
 				C4826C96246221B90034F48C /* Action.swift */,
 				C4826C90246221040034F48C /* TankWorldActions.swift */,
 				C4826C8A2462207D0034F48C /* TankWorldSupport.swift */,
-				C4F7C6AB2464B07C00EC40F1 /* HelperKit.swift */,
 			);
 			path = TankLand;
 			sourceTree = "<group>";
@@ -181,7 +178,6 @@
 				C4826C9F2462222A0034F48C /* MessageCenter.swift in Sources */,
 				C4826C95246221640034F48C /* Tank.swift in Sources */,
 				C4826C8224621D8E0034F48C /* main.swift in Sources */,
-				C4F7C6AC2464B07C00EC40F1 /* HelperKit.swift in Sources */,
 				C4826C99246221D20034F48C /* Position.swift in Sources */,
 				C43B8BFC246D928300BD1D40 /* Mine.swift in Sources */,
 				C4F7C6A82463775900EC40F1 /* GameObject.swift in Sources */,

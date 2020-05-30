@@ -8,5 +8,7 @@
 
 import Foundation
 struct RadarResult{
-    
+    let position:Position
+    let energy:Int
+    let id:String
 }

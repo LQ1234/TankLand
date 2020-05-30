@@ -9,8 +9,10 @@
 import Foundation
 
 struct Logger{
+    var start=Date()
     func addLog(_ o:GameObject,_ str:String){
-        print("\(o ) \(str)")
+        //Date()
+        print("\(start.distance(to: Date()).rounded()) \(o) \(str)")
     }
     func addMajorLog(_ o:GameObject,_ str:String){
         addLog(o,str)

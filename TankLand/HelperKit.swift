@@ -29,7 +29,14 @@ extension TankWorld{
         return(self.isGoodIndex(row:position.row,col:position.col))
     }
     func isPositionEmpty(_ position: Position)->Bool{
-        return(self.grid[position.row][position.col]==nil)
+        return(isValidPosition(position)&&self.grid[position.row][position.col]==nil)
+    }
+    func moveObject(_ go:GameObject,_ po:Position){
+        precondition(isPositionEmpty(po))
+        precondition(grid[go.position.row][go.position.col] === go)
+        grid[go.position.row][go.position.col]=nil
+        go.setPosition(newPosition: po)
+        grid[go.position.row][go.position.col]=go
     }
     func findGameObjectsWithinRange(_ position: Position, range: Int)->[Position]{
         var ret:Set<Position>=[]
@@ -94,6 +101,26 @@ extension TankWorld{
             return(nil)
         }
         return(tanks.first)
+    }
+    func dealExplosionDamage(_ mine:Mine,_ go:GameObject){
+        var dmg=mine.energy*Constants.mineStrikeMultiple
+        mine.addEnergy(amount: -mine.energy)
+        grid[mine.position.row][mine.position.col]=nil
+        if(go.objectType == .Tank){
+            let tank=go as!Tank
+            if(tank.shields>dmg){
+                tank.setShields(amount: tank.shields-dmg)
+            }else{
+                dmg-=tank.shields
+                tank.setShields(amount: 0)
+                go.addEnergy(amount: -dmg)
+            }
+            
+        }else{
+            go.addEnergy(amount: -dmg)
+        }
+        
+
     }
 }
 func isDead(_ gameObject: GameObject)->Bool{

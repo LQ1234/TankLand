@@ -29,7 +29,10 @@ extension TankWorld {
         return(text.padding(toLength: len,withPad: " ",startingAt: 0))
     }
     func fit(_ text:String,_ len:Int)->String{
-        let fill=len-text.count
+        var fill=len-text.count
+        if(fill<0){
+            return String(text.prefix(len))
+        }
         let first=fill/2
         return(String(repeating: " ", count: first)+text+String(repeating: " ", count: fill-first))
     }

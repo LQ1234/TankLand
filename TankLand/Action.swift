@@ -22,7 +22,7 @@ struct SendMessageAction:PreAction {
     let id:String
     let message:String
     var description: String {
-        return "\(action) \(id) \(message)"
+        return "\(action){id: \(id), message: \(message)}"
     }
     init (id:String,message:String){
         self.id=id
@@ -37,20 +37,33 @@ struct ReceiveMessageAction:PreAction {
     let action: Actions = .ReceiveMessage
     let id:String
     var description: String {
-        return "\(action) \(id)"
+        return "\(action){id: \(id)}"
     }
-    init (id:String,text:String){
+    init (id:String){
         self.id=id
     }
     var energyCostIfSucceeds:Int{
         return(Constants.costOfReceivingMessage)
     }
 }
+struct RunRadarAction:PreAction{
+    let action: Actions = .RunRadar
+    let radius: Int
+    var description: String {
+        return "\(action){radius: \(radius)}"
+    }
+    init (radius:Int){
+        self.radius=radius
+    }
+    var energyCostIfSucceeds:Int{
+        return(Constants.costOfRadarByUnitsDistance[self.radius])
+    }
+}
 struct SetShieldsAction:PreAction{
     let action: Actions = .SetShields
     let energyGiven:Int
     var description: String {
-        return "\(action) \(energyGiven)"
+        return "\(action){energyGiven: \(energyGiven)}"
     }
     init (energyGiven:Int){
         self.energyGiven=energyGiven
@@ -61,11 +74,11 @@ struct SetShieldsAction:PreAction{
 }
 
 struct DropMineAction:PostAction{
-    let action: Actions = .DropMine
+    let action: Actions = .DropMineOrRover
     let energyGiven:Int
     let dropDirection:Direction
     var description: String {
-        return "\(action) \(energyGiven) \(dropDirection)"
+        return "\(action){energyGiven: \(energyGiven), dropDirection: \(dropDirection)}"
     }
     init (energyGiven:Int,dropDirection:Direction){
         self.energyGiven=energyGiven
@@ -77,12 +90,12 @@ struct DropMineAction:PostAction{
 }
 
 struct DropRoverAction:PostAction{
-    let action: Actions = .DropRover
+    let action: Actions = .DropMineOrRover
     let energyGiven:Int
     let dropDirection:Direction
     let directionGiven:Direction?
     var description: String {
-        return "\(action) \(energyGiven) \(dropDirection) \(directionGiven)"
+        return "\(action){energyGiven: \(energyGiven), dropDirection: \(dropDirection), directionGiven: \(directionGiven)}"
     }
     init (energyGiven:Int,dropDirection:Direction,directionGiven:Direction?){
         self.energyGiven=energyGiven
@@ -98,7 +111,7 @@ struct FireMissileAction: PostAction{
     let energyGiven:Int
     let destination:Position
     var description: String {
-        return "\(action) \(energyGiven) \(destination)"
+        return "\(action){energyGiven: \(energyGiven), destination: \(destination)}"
     }
     init (energyGiven:Int,destination:Position){
         self.energyGiven=energyGiven
@@ -111,7 +124,7 @@ struct MoveAction: PostAction {
     let distance: Int
     let direction: Direction
     var description: String {
-        return "\(action) \(distance) \(direction)"
+        return "\(action){distance: \(distance), direction: \(direction)}"
     }
 
     init(distance: Int, direction: Direction) {
@@ -133,8 +146,7 @@ enum Actions {
     case ReceiveMessage
     case SetShields
     case RunRadar
-    case DropMine
-    case DropRover
+    case DropMineOrRover
     case FireMissile
     case Move
 }

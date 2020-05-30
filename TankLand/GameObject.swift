@@ -27,10 +27,7 @@ class GameObject: CustomStringConvertible{
         energy += amount
     }
 
-    
-    final func useEnergy(amount: Int){
-        energy = (amount > energy) ? 0 : energy - amount
-    }
+
     
 
     final func setPosition(newPosition: Position){
@@ -40,7 +37,7 @@ class GameObject: CustomStringConvertible{
  
 
     var description: String{
-        return "\(objectType) \(energy) \(id) \(position)"
+        return "\(objectType){energy: \(energy), id: \(id), position: \(position)}"
     }
 
 }
