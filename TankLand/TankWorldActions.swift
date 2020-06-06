@@ -133,7 +133,7 @@ extension TankWorld {
                 logger.addLog(go, "Has died")
                 grid[go.position.row][go.position.col]=nil
                 if(go.objectType == .Tank){
-                    let transfered=dmg/Constants.missleStrikeEnergyTransferFraction
+                    let transfered=(go.energy+dmg)/Constants.missleStrikeEnergyTransferFraction
 
                     if(isDead(tank)){
                         logger.addLog(tank, "was going to get \(transfered) energy from destroyed tank, but is dead.")

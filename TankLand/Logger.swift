@@ -9,13 +9,23 @@
 import Foundation
 
 struct Logger{
+    let quiet=true
     var start=Date()
     func addLog(_ o:GameObject,_ str:String){
         //Date()
-        print("\(start.distance(to: Date()).rounded()) \(o) \(str)")
+        if(!quiet){
+            print("\(start.distance(to: Date()).rounded()) \(o) \(str)")
+
+        }
     }
     func addMajorLog(_ o:GameObject,_ str:String){
+        
         addLog(o,str)
+    }
+    func print(_ m:String){
+        if(!quiet){
+            Swift.print(m)
+        }
     }
 }
 var logger=Logger()

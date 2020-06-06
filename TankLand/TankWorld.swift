@@ -32,16 +32,21 @@ class TankWorld {
     }
 
     func populateTankWorld() {
-        // Sample
-        addGameObject(gameObject: LTank(row: 2, col: 2, name: "T1", energy: 2000000, id: "J1", instructions: ""))
-
-        addGameObject(gameObject: LTank(row: 7, col: 2, name: "T2", energy: 2000000, id: "J2", instructions: ""))
-
-        addGameObject(gameObject: LTank(row: 7, col: 3, name: "T3", energy: 2000000, id: "J3", instructions: ""))
-
-        addGameObject(gameObject: LTank(row: 7, col: 5,  name: "T5", energy: 2000000, id: "J3", instructions: ""))
-
-        addGameObject(gameObject: LTank(row: 12, col: 3,  name: "T6", energy: 2000000, id: "J4", instructions: ""))
+        var opts:[Position]=[]
+        for row in 0..<15{
+            for col in 0..<15{
+                opts.append(Position(row: row, col: col))
+            }
+        }
+        opts.shuffle()
+        for _ in 0..<16{
+            let pos=opts.popLast()!;
+            addGameObject(gameObject: FTank(row: pos.row, col: pos.col, name: "Bad", energy: Constants.initialTankEnergy, instructions: ""))
+        }
+        for _ in 0..<2{
+            let pos=opts.popLast()!;
+            addGameObject(gameObject: LTank(row: pos.row, col: pos.col, name: "Good", energy: Constants.initialTankEnergy, instructions: ""))
+        }
     }
 
     func addGameObject(gameObject: GameObject) {
@@ -195,12 +200,12 @@ class TankWorld {
     
     func runOneTurn() {
         doTurn()
-        print(gridReport())
+        logger.print(gridReport())
     }
 
     func driver() {
         populateTankWorld()
-        print(gridReport())
+        logger.print(gridReport())
         while !gameOver {
             runOneTurn()
         }

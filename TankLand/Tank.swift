@@ -16,7 +16,7 @@ class Tank: GameObject {
     private(set) var postActions = [Actions: PostAction]()
     private let initialInstructions: String?
 
-    init(row: Int, col: Int, name: String, energy: Int, id: String, instructions: String) {
+    init(row: Int, col: Int, name: String, energy: Int, instructions: String) {
         initialInstructions = instructions
 
         super.init(row: row, col: col, objectType: .Tank, energy: energy, id: name)
