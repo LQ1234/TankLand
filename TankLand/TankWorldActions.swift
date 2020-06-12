@@ -87,7 +87,7 @@ extension TankWorld {
             return
         }
         applyCost(tank, amount: dropMineAction.energyCostIfSucceeds)
-        let mine=Mine(row: dropLocation.row, col: dropLocation.col, givenEnergy: dropMineAction.energyGiven, id: "Mine of \(tank.id)")
+        let mine=Mine(row: dropLocation.row, col: dropLocation.col, givenEnergy: dropMineAction.energyGiven, id: "Mine (\(tank.id))")
         grid[dropLocation.row][dropLocation.col]=mine
     }
     
@@ -104,7 +104,7 @@ extension TankWorld {
             return
         }
         applyCost(tank, amount: dropRoverAction.energyCostIfSucceeds)
-        let rover=Mine(row: dropLocation.row, col: dropLocation.col, givenEnergy: dropRoverAction.energyGiven, givenDirection: dropRoverAction.directionGiven, id: "Rover of \(tank.id)")
+        let rover=Mine(row: dropLocation.row, col: dropLocation.col, givenEnergy: dropRoverAction.energyGiven, givenDirection: dropRoverAction.directionGiven, id: "ROVR(\(tank.id))")
         grid[dropLocation.row][dropLocation.col]=rover
     }
     func actionFireMissile(tank: Tank,fireMissileAction:FireMissileAction){

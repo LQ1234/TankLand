@@ -9,12 +9,12 @@
 import Foundation
 
 struct Logger{
-    let quiet=true
+    let quiet=false
     var start=Date()
     func addLog(_ o:GameObject,_ str:String){
         //Date()
         if(!quiet){
-            print("\(start.distance(to: Date()).rounded()) \(o) \(str)")
+            print("\((10.0*start.distance(to: Date())).rounded()/10.0) \(o) \(str)")
 
         }
     }

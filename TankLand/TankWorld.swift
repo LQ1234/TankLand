@@ -32,26 +32,23 @@ class TankWorld {
     }
 
     func populateTankWorld() {
-        var opts:[Position]=[]
-        for row in 0..<15{
-            for col in 0..<15{
-                opts.append(Position(row: row, col: col))
-            }
-        }
-        opts.shuffle()
-        for _ in 0..<16{
-            let pos=opts.popLast()!;
-            addGameObject(gameObject: FTank(row: pos.row, col: pos.col, name: "Bad", energy: Constants.initialTankEnergy, instructions: ""))
-        }
-        for _ in 0..<2{
-            let pos=opts.popLast()!;
-            addGameObject(gameObject: LTank(row: pos.row, col: pos.col, name: "Good", energy: Constants.initialTankEnergy, instructions: ""))
-        }
+        addGameObject(gameObject: SEND(row: 2, col: 2, name: "SEND", energy: Constants.initialTankEnergy, instructions: ""))
+        addGameObject(gameObject: RCIV(row: 2, col: 3, name: "RCIV", energy: Constants.initialTankEnergy, instructions: ""))
+        addGameObject(gameObject: SHLD(row: 7, col: 8, name: "SHLD", energy: Constants.initialTankEnergy, instructions: ""))
+        addGameObject(gameObject: SCAN(row: 2, col: 5, name: "SCAN", energy: Constants.initialTankEnergy, instructions: ""))
+        addGameObject(gameObject: MOVE(row: 3, col: 5, name: "SEND", energy: Constants.initialTankEnergy, instructions: ""))
+        addGameObject(gameObject: RNDR(row: 10, col: 7, name: "RNDR", energy: Constants.initialTankEnergy, instructions: ""))
+        addGameObject(gameObject: DIRR(row: 5, col: 7, name: "DIRR", energy: Constants.initialTankEnergy, instructions: ""))
+        addGameObject(gameObject: MINE(row: 12, col: 12, name: "MINE", energy: Constants.initialTankEnergy, instructions: ""))
+        addGameObject(gameObject: MISL(row: 5, col: 5, name: "MISL", energy: Constants.initialTankEnergy, instructions: ""))
+
     }
 
     func addGameObject(gameObject: GameObject) {
         logger.addMajorLog(gameObject, "Added to TankLand")
-
+        if(grid[gameObject.position.row][gameObject.position.col] != nil){
+            fatalError("Cannot add tank to taken spot")
+        }
         grid[gameObject.position.row][gameObject.position.col] = gameObject
 
         if gameObject.objectType == .Tank { numberLivingTanks += 1 }
@@ -147,10 +144,7 @@ class TankWorld {
                 }else{
                     applyCost(rover,amount: Constants.costOfMovingRover)
                     moveObject(rover, destination)
-                    
                 }
-
-
             }
         }
         
@@ -199,6 +193,7 @@ class TankWorld {
     }
     
     func runOneTurn() {
+        logger.print("Turn \(turn)")
         doTurn()
         logger.print(gridReport())
     }
@@ -209,6 +204,6 @@ class TankWorld {
         while !gameOver {
             runOneTurn()
         }
-        print("****Winner is...\(lastLivingTank!)")
+        logger.print("****Winner is...\(lastLivingTank!)")
     }
 }

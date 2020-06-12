@@ -11,7 +11,7 @@ import Foundation
 class Tank: GameObject {
     private(set) var shields: Int = 0
     private(set) var radarResults: [RadarResult]?
-    private var receivedMessage: String?
+    private(set) var receivedMessage: String?
     private(set) var preActions = [Actions: PreAction]()
     private(set) var postActions = [Actions: PostAction]()
     private let initialInstructions: String?
@@ -50,7 +50,8 @@ class Tank: GameObject {
         self.radarResults = radarResults
     }
 
-    final func setReceivedMessage(receivedMessage: String!) {
-        self.receivedMessage = receivedMessage
+    final func setReceivedMessage(receivedMessage: String?) {
+        
+        self.receivedMessage = receivedMessage ?? ""
     }
 }

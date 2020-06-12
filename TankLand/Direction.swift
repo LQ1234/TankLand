@@ -20,21 +20,21 @@ enum Direction:Int {
     func asVec() -> Position{
         switch(self){
         case .North:
-            return(Position(row:1,col:0))
+            return(Position(row:-1,col:0))
         case .NorthEast:
-            return(Position(row:1,col:1))
+            return(Position(row:-1,col:1))
         case .East:
             return(Position(row:0,col:1))
         case .SouthEast:
-            return(Position(row:-1,col:1))
+            return(Position(row:1,col:1))
         case .South:
-            return(Position(row:-1,col:0))
+            return(Position(row:1,col:0))
         case .SouthWest:
-            return(Position(row:-1,col:-1))
+            return(Position(row:1,col:-1))
         case .West:
             return(Position(row:0,col:-1))
         case .NorthWest:
-            return(Position(row:1,col:-1))
+            return(Position(row:-1,col:-1))
         }
     }
     static func random()->Direction{
